@@ -12,6 +12,28 @@ export const authService = {
     return response.data;
   },
 
+  // async login(username, password) {
+  //   const tokenResponse = await api.post('/token/', {
+  //     username,
+  //     password,
+  //   });
+    
+  //   const { access, refresh } = tokenResponse.data;
+    
+  //   localStorage.setItem('access_token', access);
+  //   localStorage.setItem('refresh_token', refresh);
+    
+  //   api.defaults.headers.common['Authorization'] = `Bearer ${access}`;
+  //   const userResponse = await api.get('/auth/user/me/');
+    
+  //   localStorage.setItem('user', JSON.stringify(userResponse.data));
+    
+  //   return {
+  //     user: userResponse.data,
+  //     tokens: { access, refresh },
+  //   };
+  // },
+
   async login(username, password) {
     const tokenResponse = await api.post('/token/', {
       username,
@@ -23,13 +45,12 @@ export const authService = {
     localStorage.setItem('access_token', access);
     localStorage.setItem('refresh_token', refresh);
     
+    // Устанавливаем заголовок для будущих запросов
     api.defaults.headers.common['Authorization'] = `Bearer ${access}`;
-    const userResponse = await api.get('/auth/user/me/');
-    
-    localStorage.setItem('user', JSON.stringify(userResponse.data));
-    
+
+    // НЕ ДЕЛАЙ тут запрос /auth/user/me/
+    // Просто верни токены. Юзера подгрузишь на Dashboard через useEffect
     return {
-      user: userResponse.data,
       tokens: { access, refresh },
     };
   },
