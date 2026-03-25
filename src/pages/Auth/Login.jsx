@@ -6,7 +6,7 @@ import Button from '@/components/ui/Button';
 import toast from 'react-hot-toast';
 
 export default function Login() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
@@ -31,10 +31,12 @@ export default function Login() {
     try {
       await authService.login(formData.username, formData.password);
       toast.success('Вход выполнен успешно!', { id: 'login-success' });
-      navigate('/dashboard');
+      window.location.href = '/dashboard';
     } catch (error) {
       
       const errorData = error.response?.data;
+
+      
       
       if (errorData && typeof errorData === 'object') {
         setErrors(errorData);
