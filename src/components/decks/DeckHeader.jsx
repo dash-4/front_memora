@@ -34,7 +34,6 @@ export default function DeckHeader({ deck, onDelete }) {
           </div>
         </div>
 
-        {/* Правая часть: Действия */}
         <div className="flex items-center gap-3 w-full sm:w-auto self-end sm:self-center">
           <Button
             variant="ghost"

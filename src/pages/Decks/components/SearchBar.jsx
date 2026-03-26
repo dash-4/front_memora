@@ -57,7 +57,7 @@ export default function SearchBar({ searchQuery, onSearchChange }) {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Поиск колод или тегов..."
+          placeholder="Поиск колод по названию..."
           value={searchQuery}
           onChange={(e) => onSearchChange(e.target.value)}
           className="w-full pl-12 pr-12 py-3 bg-white border-2 border-gray-100 rounded-2xl shadow-sm 
@@ -66,22 +66,7 @@ export default function SearchBar({ searchQuery, onSearchChange }) {
                      hover:border-gray-200
                      focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 focus:shadow-md"
         />
-        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
-          {searchQuery ? (
-            <button
-              onClick={() => onSearchChange("")}
-              className="p-1.5 rounded-xl text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all active:scale-90"
-              title="Очистить поиск"
-            >
-              <X size={18} strokeWidth={2.5} />
-            </button>
-          ) : (
-            <div className="hidden sm:flex items-center gap-1 px-2 py-1 bg-gray-50 border border-gray-200 rounded-lg text-[10px] font-black text-gray-400 uppercase tracking-tighter select-none">
-              <Command size={10} />
-              <span>/</span>
-            </div>
-          )}
-        </div>
+     
       </div>
       
       {searchQuery && (

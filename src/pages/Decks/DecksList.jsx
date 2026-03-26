@@ -31,12 +31,13 @@ export default function DecksList() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleDeleteFolder = async (id) => {
-    if (!window.confirm("Вы уверены? Папка и все её содержимое будут удалены.")) return;
+    if (!window.confirm("Вы уверены? Папка и все её содержимое будут удалены."))
+      return;
 
     try {
       await api.delete(`/folders/${id}/`);
       toast.success("Папка успешно удалена");
-      
+
       await fetchFoldersTree();
 
       if (selectedFolderId === id) {
@@ -107,9 +108,10 @@ export default function DecksList() {
     let result = [...decks];
     if (debouncedSearch.trim()) {
       const q = debouncedSearch.toLowerCase();
-      result = result.filter(d => 
-        d.name.toLowerCase().includes(q) || 
-        d.description?.toLowerCase().includes(q)
+      result = result.filter(
+        (d) =>
+          d.name.toLowerCase().includes(q) ||
+          d.description?.toLowerCase().includes(q),
       );
     }
     setFilteredDecks(result);
@@ -121,7 +123,7 @@ export default function DecksList() {
   };
 
   const toggleFolderExpand = (id) => {
-    setExpandedFolders(prev => {
+    setExpandedFolders((prev) => {
       const next = new Set(prev);
       next.has(id) ? next.delete(id) : next.add(id);
       return next;
@@ -141,7 +143,6 @@ export default function DecksList() {
   return (
     <Layout>
       <div className="flex bg-[#FAFBFF]">
-        
         <aside className="hidden lg:block w-72 flex-shrink-0 border-r border-slate-200/60 bg-white/50 backdrop-blur-md">
           <div className="h-full">
             <FolderSidebar
@@ -151,36 +152,40 @@ export default function DecksList() {
               expandedFolders={expandedFolders}
               onToggleExpand={toggleFolderExpand}
               onCreateFolder={() => setShowCreateFolderModal(true)}
-              onDeleteFolder={handleDeleteFolder} 
+              onDeleteFolder={handleDeleteFolder}
             />
           </div>
         </aside>
 
         <main className="flex-1 relative">
           <div className="max-w-6xl mx-auto p-4 md:p-8 lg:p-10 space-y-6 md:space-y-8">
-            
-            <div className="flex items-center justify-between">
-              <div className="overflow-x-auto scrollbar-hide whitespace-nowrap mr-4">
+            <div className="flex items-center">
+              <div className="overflow-x-auto scrollbar-hide whitespace-nowrap">
                 <FolderBreadcrumbs
                   breadcrumbs={currentFolder?.breadcrumbs || []}
                   onNavigate={handleFolderSelect}
                 />
               </div>
-              <button
-                className="lg:hidden p-2.5 bg-white border border-slate-200 rounded-xl text-slate-600 shadow-sm active:scale-95 transition-transform"
-                onClick={() => setIsSidebarOpen(true)}
-              >
-                <Menu size={22} />
-              </button>
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
               <div className="space-y-1">
-                <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-                  {currentFolder ? currentFolder.name : "Библиотека"}
-                </h1>
+                <div className="flex items-center gap-3 justify-between">
+                  <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
+                    {currentFolder ? currentFolder.name : "Библиотека"}
+                  </h1>
+                  <button
+                    className="lg:hidden p-2 bg-white border border-slate-200 rounded-xl text-slate-600 shadow-sm active:scale-95 transition-transform"
+                    onClick={() => setIsSidebarOpen(true)}
+                  >
+                    <Menu size={20} />
+                  </button>
+                </div>
+
                 {currentFolder?.description && (
-                  <p className="text-slate-500 font-medium max-w-xl">{currentFolder.description}</p>
+                  <p className="text-slate-500 font-medium max-w-xl">
+                    {currentFolder.description}
+                  </p>
                 )}
               </div>
 
@@ -195,7 +200,7 @@ export default function DecksList() {
                 </Button>
                 <Button
                   onClick={() => setShowCreateDeckModal(true)}
-                  className="flex-[2] sm:flex-none rounded-2xl font-bold px-4 md:px-4 py-2 sm:py-2 shadow-lg shadow-blue-100"
+                  className="flex-[2] sm:flex-none rounded-2xl bg-blue-600 hover:bg-slate-900 text-white font-bold px-4 md:px-4 py-2 sm:py-2 shadow-lg shadow-blue-100"
                 >
                   <Plus size={20} className="sm:mr-2" />
                   Новая колода
@@ -217,7 +222,9 @@ export default function DecksList() {
               <section className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 <div className="flex items-center gap-2 mb-4 px-1">
                   <div className="w-2 h-2 rounded-full bg-blue-500" />
-                  <h2 className="text-xs font-black uppercase tracking-widest text-slate-400">Папки</h2>
+                  <h2 className="text-xs font-black uppercase tracking-widest text-slate-400">
+                    Папки
+                  </h2>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                   {subfolders.map((folder) => (
@@ -236,7 +243,8 @@ export default function DecksList() {
               <div className="flex items-center gap-2 mb-6 px-1">
                 <div className="w-2 h-2 rounded-full bg-indigo-500" />
                 <h2 className="text-xs font-black uppercase tracking-widest text-slate-400">
-                  Колоды {filteredDecks.length > 0 && `(${filteredDecks.length})`}
+                  Колоды{" "}
+                  {filteredDecks.length > 0 && `(${filteredDecks.length})`}
                 </h2>
               </div>
 
@@ -251,12 +259,20 @@ export default function DecksList() {
                   <div className="bg-white w-16 h-16 md:w-20 md:h-20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-sm text-slate-200">
                     <Layers size={32} />
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-slate-900">Пусто</h3>
+                  <h3 className="text-lg md:text-xl font-bold text-slate-900">
+                    Пусто
+                  </h3>
                   <p className="text-slate-500 text-sm md:text-base max-w-xs mx-auto mt-2 mb-8">
-                    {searchQuery ? "По вашему запросу ничего не нашлось" : "Начните с создания первой колоды"}
+                    {searchQuery
+                      ? "По вашему запросу ничего не нашлось"
+                      : "Начните с создания первой колоды"}
                   </p>
                   {searchQuery && (
-                    <Button variant="outline" onClick={() => setSearchQuery("")} className="rounded-xl">
+                    <Button
+                      variant="outline"
+                      onClick={() => setSearchQuery("")}
+                      className="rounded-xl"
+                    >
                       Сбросить фильтры
                     </Button>
                   )}
@@ -269,20 +285,34 @@ export default function DecksList() {
 
       {isSidebarOpen && (
         <div className="fixed inset-0 z-[100] lg:hidden">
-          <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-300" onClick={() => setIsSidebarOpen(false)} />
-          <div className="absolute inset-y-0 left-0 w-[85%] max-w-sm bg-white shadow-2xl animate-in slide-in-from-left duration-300">
-            <div className="flex items-center justify-between p-6 border-b border-slate-50">
-              <h2 className="text-xl font-black text-slate-900">Навигация</h2>
-              <button onClick={() => setIsSidebarOpen(false)} className="p-2 text-slate-400"><X size={24}/></button>
+          <div
+            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-300"
+            onClick={() => setIsSidebarOpen(false)}
+            aria-hidden="true"
+          />
+
+          <div className="absolute inset-y-0 left-0 w-[85%] max-w-[320px] bg-white shadow-2xl flex flex-col animate-in slide-in-from-left duration-300 ease-out rounded-r-[2rem]">
+            <div className="flex items-center justify-between p-4 border-b border-slate-50">
+              <span className="font-black text-slate-900 ml-2">Навигация</span>
+              <button
+                onClick={() => setIsSidebarOpen(false)}
+                className="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-50 rounded-xl transition-colors"
+              >
+                <X size={24} strokeWidth={2.5} />
+              </button>
             </div>
-            <div className="h-[calc(100%-80px)] overflow-y-auto scrollbar-hide">
+
+            <div className="flex-1 overflow-y-auto overscroll-contain py-2 scrollbar-hide">
               <FolderSidebar
                 folders={folders}
                 selectedFolderId={selectedFolderId}
-                onFolderSelect={handleFolderSelect}
+                onFolderSelect={(id) => {
+                  handleFolderSelect(id);
+                  setIsSidebarOpen(false);
+                }}
                 expandedFolders={expandedFolders}
                 onToggleExpand={toggleFolderExpand}
-                onDeleteFolder={handleDeleteFolder} 
+                onDeleteFolder={handleDeleteFolder}
                 onCreateFolder={() => {
                   setIsSidebarOpen(false);
                   setShowCreateFolderModal(true);
@@ -311,7 +341,9 @@ export default function DecksList() {
           onClose={() => setShowCreateDeckModal(false)}
           onSuccess={() => {
             setShowCreateDeckModal(false);
-            selectedFolderId ? fetchFolderContents(selectedFolderId) : fetchAllDecks();
+            selectedFolderId
+              ? fetchFolderContents(selectedFolderId)
+              : fetchAllDecks();
             fetchFoldersTree();
           }}
         />

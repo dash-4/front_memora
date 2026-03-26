@@ -93,22 +93,7 @@ export const CardFilters = ({
         )}
       </div>
 
-      {hasActiveFilters && (
-        <div className="flex flex-wrap gap-2 items-center pt-4 border-t border-slate-50 animate-in fade-in slide-in-from-top-2 duration-500">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 mr-2">Активно:</span>
-          
-          {filters.search && (
-            <Tag label={`Поиск: ${filters.search}`} onRemove={() => onFilterChange('search', '')} />
-          )}
-          
-          {filters.status && (
-            <Tag 
-              label={filters.status === 'new' ? 'Новые' : filters.status === 'learning' ? 'Изучаются' : 'Выучены'} 
-              onRemove={() => onFilterChange('status', '')} 
-            />
-          )}
-        </div>
-      )}
+     
     </div>
   );
 };

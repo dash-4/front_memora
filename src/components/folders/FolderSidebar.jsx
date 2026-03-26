@@ -10,7 +10,7 @@ export default function FolderSidebar({
   onDeleteFolder, 
 }) {
   return (
-    <div className="w-72 bg-white/50 backdrop-blur-md h-full overflow-y-auto flex-shrink-0 border-r border-slate-200/60">
+    <div className="w-72 bg-white/50 backdrop-blur-md h-full overflow-y-auto flex-shrink-0">
       <div className="p-6 sticky top-0 bg-white/80 backdrop-blur-md z-10">
         <button
           onClick={() => onFolderSelect(null)}

@@ -4,7 +4,7 @@ export default function FolderBreadcrumbs({ breadcrumbs = [], onNavigate }) {
   if (!breadcrumbs?.length) return null;
 
   return (
-    <nav className="flex items-center gap-1.5 text-xs sm:text-sm mb-6 bg-slate-50/50 p-2 rounded-2xl w-fit border border-slate-100/50">
+    <nav className="flex items-center gap-1.5 text-xs sm:text-sm  bg-slate-50/50 p-2 rounded-2xl w-fit border border-slate-100/50">
       <button
         onClick={() => onNavigate(null)}
         className="p-2 hover:bg-white hover:shadow-sm rounded-xl text-slate-400 hover:text-blue-600 transition-all active:scale-90"

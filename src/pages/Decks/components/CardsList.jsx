@@ -34,7 +34,7 @@ export default function CardsList({
         
         <Button 
           onClick={onCreateCard} 
-          className="w-full sm:w-auto bg-slate-900 hover:bg-blue-600 text-white rounded-[1.25rem] px-8 py-4 shadow-xl shadow-slate-200 hover:shadow-blue-200 transition-all active:scale-95 group"
+          className="w-full sm:w-auto bg-blue-600 hover:bg-slate-900 text-white rounded-[1.25rem] px-8 py-4 shadow-xl shadow-slate-200 hover:shadow-blue-200 transition-all active:scale-95 group"
         >
           <Plus size={20} className="mr-2 stroke-[3px] group-hover:rotate-90 transition-transform" />
           <span className="font-bold">Добавить карточку</span>
