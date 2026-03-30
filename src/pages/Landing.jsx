@@ -86,51 +86,85 @@ export default function Landing() {
                   Начать бесплатно
                 </Button>
               </Link>
-              
             </div>
           </div>
           
-          <div className="relative">
-            <div className="absolute -inset-10 bg-gradient-to-tr from-blue-500/10 to-indigo-500/10 rounded-full blur-3xl opacity-60" />
-            <div className="relative bg-white border border-slate-200 rounded-[2.5rem] shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] overflow-hidden transform lg:rotate-2 hover:rotate-0 transition-transform duration-700">
-               <div className="p-8 space-y-6">
-                 <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-indigo-400 flex items-center justify-center text-indigo-600 font-black">
-                         {/* Аватарка питомца */}
-                         😸
+          <div className="relative group/container">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] pointer-events-none">
+              <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-400/20 rounded-full blur-[100px] animate-pulse" />
+              <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-indigo-500/15 rounded-full blur-[100px] animate-bounce duration-[10s]" />
+            </div>
+
+            <div className="relative max-w-sm mx-auto">
+              <div className="relative bg-white/80 backdrop-blur-2xl border border-white rounded-[3rem] shadow-[0_40px_80px_-15px_rgba(0,0,0,0.08)] overflow-hidden transition-all duration-700 hover:shadow-[0_50px_100px_-20px_rgba(79,70,229,0.15)] hover:-translate-y-2 lg:rotate-3 hover:rotate-0">
+                <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
+
+                <div className="p-8 space-y-8">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="relative">
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-50 to-indigo-100 flex items-center justify-center text-3xl shadow-inner border border-indigo-200/50">
+                          😸
+                        </div>
+                        <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 border-4 border-white rounded-full flex items-center justify-center">
+                          <div className="w-1.5 h-1.5 bg-white rounded-full animate-ping" />
+                        </div>
                       </div>
                       <div>
-                        <p className="text-[10px] font-black uppercase text-slate-400">Питомец</p>
-                        <p className="font-bold text-slate-900">Buddy Level 12</p>
+                        <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Level 12</p>
+                        <p className="font-black text-slate-900 text-lg">Buddy</p>
                       </div>
                     </div>
-                    <div className="px-3 py-1 bg-emerald-50 text-emerald-600 rounded-lg text-[10px] font-black uppercase tracking-tighter">
-                      Streak 8 days
+                    
+                    <div className="flex flex-col items-end">
+                      <span className="flex items-center gap-1 text-orange-500 font-black text-sm">
+                        <span className="animate-bounce">🔥</span> 8 дней
+                      </span>
+                      <p className="text-[9px] font-bold text-slate-400 uppercase">Ударный режим</p>
                     </div>
-                 </div>
-                 
-                 <div className="h-48 bg-slate-50 rounded-2xl border border-dashed border-slate-200 flex flex-col items-center justify-center text-center p-6 group">
-                    <div className="w-16 h-16 bg-blue-600 rounded-2xl shadow-xl shadow-blue-200 flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform">
-                       <Zap fill="currentColor" />
-                    </div>
-                    <p className="font-black text-slate-900">24 карточки</p>
-                    <p className="text-xs text-slate-400 font-bold uppercase mt-1">Ждут повторения</p>
-                 </div>
+                  </div>
 
-                 <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-slate-900 rounded-2xl text-white">
-                       <LineChart size={20} className="mb-2 text-blue-400" />
-                       <p className="text-[10px] opacity-60 font-bold uppercase">Успех</p>
-                       <p className="text-lg font-black">94%</p>
+                  <div className="relative group/action cursor-pointer">
+                    <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2rem] opacity-0 group-hover/action:opacity-10 transition-opacity blur-xl" />
+                    
+                    <div className="relative h-52 bg-gradient-to-br from-slate-50 to-slate-100/50 rounded-[2rem] border border-slate-200/60 flex flex-col items-center justify-center text-center p-6 transition-all duration-500 group-hover/action:bg-white group-hover/action:shadow-xl group-hover/action:shadow-indigo-500/10">
+                      <div className="relative mb-6">
+                        <div className="absolute inset-0 bg-blue-500 blur-2xl opacity-20 group-hover/action:opacity-40 transition-opacity" />
+                        <div className="relative w-20 h-20 bg-blue-600 rounded-[2rem] shadow-2xl shadow-blue-300 flex items-center justify-center text-white transform group-hover/action:rotate-[10deg] transition-transform duration-500">
+                          <Zap size={32} fill="currentColor" />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-1">
+                        <p className="text-2xl font-black text-slate-900">24 карточки</p>
+                        <p className="text-[10px] text-blue-600 font-black uppercase tracking-widest">Пора закрепить знания</p>
+                      </div>
+
+                      <div className="absolute bottom-4 inset-x-8 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                        <div className="h-full w-2/3 bg-blue-600 rounded-full" />
+                      </div>
                     </div>
-                    <div className="p-4 bg-indigo-600 rounded-2xl text-white">
-                       <Award size={20} className="mb-2 text-indigo-300" />
-                       <p className="text-[10px] opacity-60 font-bold uppercase">XP</p>
-                       <p className="text-lg font-black italic">1000</p>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="group/stat p-5 bg-slate-900 rounded-[1.5rem] text-white transition-all hover:scale-[1.02] active:scale-95">
+                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mb-3 group-hover/stat:bg-blue-500 transition-colors">
+                        <LineChart size={16} className="text-blue-400 group-hover/stat:text-white" />
+                      </div>
+                      <p className="text-[9px] opacity-50 font-black uppercase tracking-wider">Точность</p>
+                      <p className="text-2xl font-black">94%</p>
                     </div>
-                 </div>
-               </div>
+
+                    <div className="group/stat p-5 bg-indigo-600 rounded-[1.5rem] text-white transition-all hover:scale-[1.02] active:scale-95 shadow-lg shadow-indigo-200">
+                      <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center mb-3 group-hover/stat:bg-white group-hover/stat:text-indigo-600 transition-colors">
+                        <Award size={16} className="text-indigo-200 group-hover/stat:text-indigo-600" />
+                      </div>
+                      <p className="text-[9px] opacity-60 font-black uppercase tracking-wider">Очки опыта</p>
+                      <p className="text-2xl font-black tabular-nums">1,000</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -210,7 +244,6 @@ export default function Landing() {
         </Link>
         <p className="mt-8 text-slate-400 font-bold uppercase tracking-widest text-[10px]">
           Доказано: повторения переводят до 90% информации в долгосрочный актив.
-
         </p>
       </section>
 
