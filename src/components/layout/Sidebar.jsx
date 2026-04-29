@@ -42,15 +42,6 @@ export default function Sidebar({ isOpen, onClose }) {
           ))}
         </nav>
         
-        <div className="mt-auto pt-6 border-t border-slate-50">
-          <Link 
-            to="/faq" 
-            className="flex items-center gap-3 px-4 py-3 rounded-2xl text-slate-400 font-bold hover:text-blue-600 hover:bg-blue-50 transition-all"
-          >
-            <HelpCircle size={20} />
-            Помощь
-          </Link>
-        </div>
       </aside>
 
       <aside
